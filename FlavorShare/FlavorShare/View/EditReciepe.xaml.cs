@@ -1,4 +1,5 @@
-﻿using FlavorShare.ViewModel;
+﻿using FlavorShare.Model;
+using FlavorShare.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ using Xamarin.Forms.Xaml;
 namespace FlavorShare.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Signup : ContentPage
+    public partial class EditReciepe : ContentPage
     {
-        public Signup()
+        public EditReciepe(FoodReceipe obj)
         {
+
             InitializeComponent();
-            SignUpViewModel signUpViewModel = new SignUpViewModel();
-            this.BindingContext = signUpViewModel;
+            EditReciepeViewModel editReciepeViewModel = new EditReciepeViewModel(obj);
+            this.BindingContext = editReciepeViewModel;
         }
     }
 }

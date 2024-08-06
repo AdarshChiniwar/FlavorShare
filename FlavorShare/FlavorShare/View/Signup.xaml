@@ -1,12 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              NavigationPage.HasNavigationBar="False" BackgroundColor="White"
              x:Class="FlavorShare.View.Signup">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="Orange" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.RowSpan="3">
+            <Image Source="background.jpg" Aspect="AspectFill" />
+        </Grid>
+
+        <Label Text="Sign Up"  FontSize="35" TextColor="White" VerticalOptions="Start"
+            FontAttributes="Bold" Margin="10,10,0,0" HorizontalOptions="Start"  />
+
+        <StackLayout  Grid.Row="1" Margin="10,20,0,0" HorizontalOptions="Start" VerticalOptions="Center">
+            <Image Source="logo.png"  VerticalOptions="Center"
+              HeightRequest="150" WidthRequest="150"/>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout VerticalOptions="Center" Grid.Row="2" WidthRequest="200" Spacing="20" Margin="15" HorizontalOptions="Start">
+            <Label Text="A good receipe is just few clicks away :)" TextColor="White"
+                   HorizontalTextAlignment="Center" FontAttributes="Bold"
+                   FontSize="Large"
+                   />
+            <Entry Placeholder="User Name" BackgroundColor="WhiteSmoke" Opacity="0.5" Text="{Binding UserName, Mode=TwoWay}" PlaceholderColor="Gray"
+                />
+            <Entry Placeholder="Password" IsPassword="True" BackgroundColor="WhiteSmoke" Opacity="0.5"  Text="{Binding Password, Mode=TwoWay}" PlaceholderColor="Gray"
+                />
+
+            <Button Text="Sign Up" FontAttributes="Bold" TextColor="Black" 
+                CornerRadius="20" Command="{Binding SignUpCmd}"/>
+
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Already have an account? Sign In" FontAttributes="Bold" TextColor="White">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SignInCmd}"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </Grid>
 </ContentPage>

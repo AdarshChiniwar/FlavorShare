@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+              BackgroundColor="WhiteSmoke"
+             x:Class="FlavorShare.View.AddReciepes">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="PlaceholderColor" Value="LightGray" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Spacing="20" Margin="20" Orientation="Horizontal" HorizontalOptions="Start">
+            <Label Text="Edit recipe :)" 
+                   FontAttributes="Bold"
+                   FontSize="Title"
+                   HorizontalOptions="Start" />
+            <Image Source="logo.png" HeightRequest="100" WidthRequest="100"/>
+        </StackLayout>
+        <ScrollView Grid.Row="1" Margin="20">
+            <StackLayout x:Name="addlayout">
+                <StackLayout>
+                    <Label Text="Recipe Name :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding recipeName}" Placeholder="Recipe Name"  />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Decription :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding description}" Placeholder="Decription"  />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Cuisine :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding cuisine}" Placeholder="Cuisine"  />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Category :" FontAttributes="Bold"/>
+                    <Picker Title="Category" ItemsSource="{Binding Categorys}" SelectedItem="{Binding SelectedCategory}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Cooking Time in mins :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding cookingTime}" Keyboard="Numeric" Placeholder="Cooking Time"  />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Preparation Time in mins :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding preparationTime}" Keyboard="Numeric" Placeholder="Preparation Time"  />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Total Time in mins :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding totalTime}" Keyboard="Numeric" Placeholder="Total Time"  />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Difficulty Level :" FontAttributes="Bold"/>
+                    <Picker Title="Difficulty" ItemsSource="{Binding Difficultys}" SelectedItem="{Binding SelectedDifficulty}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Diet Type:" FontAttributes="Bold"/>
+                    <Picker Title="Diet Type" ItemsSource="{Binding Diets}" SelectedItem="{Binding SelectedDiet}"/>
+                </StackLayout>
+                <Label Text="Ingredients:" FontSize="Title" FontAttributes="Bold"/>
+                
+                <StackLayout Spacing="10">
+                    <Label Text="Name :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding IngredientsName}" Placeholder="Name"  />
+
+                    <Label Text="Quantity in gms:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding IngredientsQuantity}" Placeholder="Quantity" Keyboard="Numeric" />
+
+                    <!--<Label Text="Unit :" FontAttributes="Bold"/>
+                    <Picker Title="Unit" ItemsSource="{Binding Units}" SelectedItem="{Binding SelectedUnit}"/>-->
+
+                    <Button Text="Add Ingredient" Background="orange"
+                      Command="{Binding AddIngredientCommand}" />
+
+                    <CollectionView ItemsSource="{Binding Ingredients}" >
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Background="orange" CornerRadius="20" Padding="10" HasShadow="True" Margin="10">
+                                    <StackLayout>
+                                        <Label Text="{Binding name}" />
+                                        <Label Text="{Binding quantity}" />
+                                        <ImageButton HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center"
+                                                     WidthRequest="30" Source="delete" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.DeleteIngri}" 
+                                                     CommandParameter="{Binding .}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                
+                <Label Text="Instructions:" FontAttributes="Bold" FontSize="Title"/>
+
+                <StackLayout Spacing="10">
+                    <Label Text="Step Number :" FontAttributes="Bold"/>
+                    <Entry Text="{Binding StepNumber}" Placeholder="Step Number"  Keyboard="Numeric"/>
+
+                    <Label Text="Instruction:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding Instruction}" Placeholder="Instruction" />
+
+                    <!--<Label Text="Unit :" FontAttributes="Bold"/>
+    <Picker Title="Unit" ItemsSource="{Binding Units}" SelectedItem="{Binding SelectedUnit}"/>-->
+
+                    <Button Text="Add Steps" Background="orange"
+                         Command="{Binding AddStepsCommand}" />
+
+                    <CollectionView ItemsSource="{Binding Steps}" >
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Background="orange" CornerRadius="20" HasShadow="True">
+                                    <StackLayout>
+                                        <Label Text="{Binding stepNumber}" />
+                                        <Label Text="{Binding instruction}" />
+                                        <ImageButton HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center"
+                                                     WidthRequest="30" Source="delete" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.DeleteStep}" 
+                                     CommandParameter="{Binding .}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <Button Text="Add Reciepe" Background="orange" Command="{Binding AddCompleteReciepeCmd}" TextColor="Black"/>
+            </StackLayout>
+
+        
+        </ScrollView>
+     
+       
+
+    </Grid>
+
+  
+</ContentPage>

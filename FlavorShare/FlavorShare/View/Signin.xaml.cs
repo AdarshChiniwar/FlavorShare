@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlavorShare.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace FlavorShare.View
         public Signin()
         {
             InitializeComponent();
+            SigninViewModel signinViewModel = new SigninViewModel();
+            this.BindingContext = signinViewModel;
         }
     }
 }

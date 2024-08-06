@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace FlavorShare.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Signup : ContentPage
+    public partial class ReciepeList : ContentPage
     {
-        public Signup()
+        public ReciepeList()
         {
             InitializeComponent();
-            SignUpViewModel signUpViewModel = new SignUpViewModel();
-            this.BindingContext = signUpViewModel;
+            ReciepeListViewModel reciepeListViewModel = new ReciepeListViewModel();
+            this.BindingContext = reciepeListViewModel;
         }
     }
 }

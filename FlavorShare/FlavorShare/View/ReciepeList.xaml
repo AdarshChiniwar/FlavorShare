@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+               BackgroundColor="WhiteSmoke"
+             xmlns:converters="clr-namespace:FlavorShare.Converters"
+             x:Class="FlavorShare.View.ReciepeList">
+    <ContentPage.Resources>
+        <converters:IngredientConverter x:Key="IngredientConverter" />
+        <converters:StepConverter x:Key="StepConverter" />
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="PlaceholderColor" Value="LightGray" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions >
+
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Spacing="10" Margin="20" Orientation="Horizontal"  HorizontalOptions="Start">
+            <Label Text="Your Recieps :)" FontAttributes="Bold"
+               FontSize="Title" HorizontalOptions="Start"  />
+            <Image Source="logo.png" HeightRequest="150" Margin="0,-45,0,0" WidthRequest="150"/>
+        </StackLayout>
+
+        <Button Grid.Row="1" Text="Refresh View" Command="{Binding RefreshCmd}" BackgroundColor="Orange" HeightRequest="50" WidthRequest="20"/>
+        <CollectionView ItemsSource="{Binding MyRecieps}" Grid.Row="2">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="20" HasShadow="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Recipe Name" Grid.Row="0" FontAttributes="Bold" />
+                            <Label Text="{Binding recipeName}" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Description" Grid.Row="1" FontAttributes="Bold" />
+                            <Label Text="{Binding description}" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Cuisine" Grid.Row="2" FontAttributes="Bold" />
+                            <Label Text="{Binding cuisine}" Grid.Row="2" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Category" Grid.Row="3" FontAttributes="Bold" />
+                            <Label Text="{Binding category}" Grid.Row="3" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+
+                            <Label Text="Preparation Time" Grid.Row="4" FontAttributes="Bold" />
+                            <Label Text="{Binding preparationTime}" Grid.Row="4" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Cooking Time" Grid.Row="5" FontAttributes="Bold" />
+                            <Label Text="{Binding cookingTime}" Grid.Row="5" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+
+                            <Label Text="Total Time" Grid.Row="6" FontAttributes="Bold" />
+                            <Label Text="{Binding totalTime}" Grid.Row="6" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Difficulty Level" Grid.Row="7" FontAttributes="Bold" />
+                            <Label Text="{Binding difficultyLevel}" Grid.Row="7" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Ingredients" Grid.Row="8" FontAttributes="Bold" />
+                            <Label Text="{Binding ingredients,Converter={StaticResource IngredientConverter}}" Grid.Row="8" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Instructions" Grid.Row="9" FontAttributes="Bold" />
+                            <Label Text="{Binding instructions,Converter={StaticResource StepConverter}}" Grid.Row="9" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <Label Text="Diet Type" Grid.Row="10" FontAttributes="Bold" />
+                            <Label Text="{Binding dietType}" Grid.Row="10" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
+
+                            <ImageButton Grid.Row="11" Source="edit" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.EditCmd}" 
+                                         CommandParameter="{Binding .}" BackgroundColor="Gray" HeightRequest="30" WidthRequest="30"
+                                         />
+
+                            <ImageButton Grid.Row="11" Source="delete" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.DeleteCmd}" 
+                                         CommandParameter="{Binding .}" Grid.Column="2"  BackgroundColor="Red" HeightRequest="30" WidthRequest="30"
+                                           />
+                         </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+  
+</ContentPage>
