@@ -23,8 +23,12 @@ namespace FlavorShare.View
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            Preferences.Set("user", string.Empty);
-            Application.Current.MainPage = new NavigationPage(new Signin());
+            bool result = await Application.Current.MainPage.DisplayAlert("Info", "Are you sure you want to logout?", "Ok", "Cancel");
+            if (result)
+            {
+                Preferences.Set("user", string.Empty);
+                Application.Current.MainPage = new NavigationPage(new Signin());
+            }
         }
     }
 }

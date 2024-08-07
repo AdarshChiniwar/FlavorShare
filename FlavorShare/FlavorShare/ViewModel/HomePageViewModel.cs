@@ -41,11 +41,11 @@ namespace FlavorShare.ViewModel
         {
             MyRecieps = new ObservableCollection<FoodReceipe>();
             ImageCollection = new ObservableCollection<ImageModel>();
-            ImageCollection.Add(new ImageModel { CauroselImage = "https://static.vecteezy.com/system/resources/thumbnails/017/545/249/small/fast-food-banner-decorated-with-horizontal-border-of-doodles-and-lettering-quote-for-social-media-menues-prints-cards-templates-posters-etc-eps-10-free-vector.jpg" });
-            ImageCollection.Add(new ImageModel { CauroselImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_FkABbFMKkGN4OdSGOv7VxuI5Hi_UwVB-qg&s" });
-            ImageCollection.Add(new ImageModel { CauroselImage = "https://img.freepik.com/free-vector/flat-horizontal-banner-template-world-vegan-day-celebration_23-2150898076.jpg" });
-            ImageCollection.Add(new ImageModel { CauroselImage = "https://thumbs.dreamstime.com/b/banner-seafood-shrimps-their-preparation-pan-green-beans-delicious-healthy-food-horizontal-photo-advertising-169242604.jpg" });
-            ImageCollection.Add(new ImageModel { CauroselImage = "https://img.freepik.com/free-photo/delicious-flexitarian-diet-arrangement-top-view_23-2148862677.jpg" });
+            ImageCollection.Add(new ImageModel { CauroselImage = "a.jpg" });
+            ImageCollection.Add(new ImageModel { CauroselImage = "b.jpeg" });
+            ImageCollection.Add(new ImageModel { CauroselImage = "c.avif" });
+            ImageCollection.Add(new ImageModel { CauroselImage = "d.webp" });
+            ImageCollection.Add(new ImageModel { CauroselImage = "e.avif" });
             Refresh();
         }
         #endregion
