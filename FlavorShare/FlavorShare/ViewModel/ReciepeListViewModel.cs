@@ -68,7 +68,7 @@ namespace FlavorShare.ViewModel
                 List<instructionClass> ste = JsonConvert.DeserializeObject<List<instructionClass>>(foodReceipe.instructions);
                 foreach (var item in ingredients)
                 {
-                    stringBuilder.AppendLine($"Ingredients: {item.name} and Qty {item.quantity} in gms");
+                    stringBuilder.AppendLine($"Ingredients: {item.name} - {item.quantity} gms");
                 }
                 foreach (var item in ste)
                 {
