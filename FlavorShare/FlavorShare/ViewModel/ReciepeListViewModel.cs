@@ -72,7 +72,7 @@ namespace FlavorShare.ViewModel
                 }
                 foreach (var item in ste)
                 {
-                    stringBuilder.AppendLine($"Ingredients: {item.stepNumber}) {item.instruction}");
+                    stringBuilder.AppendLine($"Step: {item.stepNumber}) {item.instruction}");
                 }
                 //stringBuilder.AppendLine($"Ingredients: {foodReceipe.ingredients}");
                 //stringBuilder.AppendLine($"Instructions: {foodReceipe.instructions}");
