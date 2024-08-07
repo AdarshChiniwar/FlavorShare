@@ -97,14 +97,21 @@
                             <Label Text="Diet Type" Grid.Row="10" FontAttributes="Bold" />
                             <Label Text="{Binding dietType}" Grid.Row="10" Grid.Column="2" FontAttributes="Bold" TextColor="Orange" />
 
-                            <ImageButton Grid.Row="11" Source="edit" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.EditCmd}" 
-                                         CommandParameter="{Binding .}" BackgroundColor="Gray" HeightRequest="30" WidthRequest="30"
-                                         />
+                            <StackLayout Orientation="Horizontal" Grid.Row="11" Grid.ColumnSpan="3">
+                                <ImageButton Grid.Row="11" Source="edit" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.EditCmd}" 
+                  CommandParameter="{Binding .}" BackgroundColor="Gray" HeightRequest="30" WidthRequest="30"
+                  />
 
-                            <ImageButton Grid.Row="11" Source="delete" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.DeleteCmd}" 
-                                         CommandParameter="{Binding .}" Grid.Column="2"  BackgroundColor="Red" HeightRequest="30" WidthRequest="30"
-                                           />
-                         </Grid>
+                                <ImageButton Grid.Row="11" Source="delete" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.DeleteCmd}" 
+                  CommandParameter="{Binding .}" Grid.Column="2"  BackgroundColor="DarkRed" HeightRequest="30" WidthRequest="30"
+                    />
+
+                                <ImageButton Grid.Row="11" Source="share" Command="{Binding Source={RelativeSource Mode=FindAncestor,AncestorType={x:Type CollectionView}},Path=BindingContext.ShareCmd}" 
+           CommandParameter="{Binding .}" Grid.Column="2"  BackgroundColor="DarkGreen" HeightRequest="30" WidthRequest="30"
+      />
+                            </StackLayout>
+                       
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

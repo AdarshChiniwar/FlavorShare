@@ -63,7 +63,7 @@ namespace FlavorShare.ViewModel
                 if (val)
                 {
                     Preferences.Set("user", UserName);
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new NavigationPage(new MainPage());
                 }
                 else
                 {
